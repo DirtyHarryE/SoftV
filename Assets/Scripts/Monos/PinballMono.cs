@@ -6,6 +6,9 @@ public class PinballMono : MonoBehaviour {
     [SerializeField]
     CardBucketController[] m_Buckets;
 
+    [SerializeField]
+    RectTransform[] m_JigsawParents;
+
 
 	// Use this for initialization
 	void Start () {

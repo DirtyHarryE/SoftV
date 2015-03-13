@@ -14,6 +14,14 @@ public class ChapterIconMono : MonoBehaviour
     public Text Title { get { return m_Title; } }
     public Text Percentage { get { return m_Percentage; } }
 
+
+    [SerializeField]
+    private GameObject[] m_JigsawPieces;
+    public GameObject[] JigsawPieces
+    {
+        get { return m_JigsawPieces; }
+    }
+
     public int ID;
 
     public void PressButton()

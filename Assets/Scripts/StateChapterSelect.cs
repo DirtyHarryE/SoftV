@@ -11,14 +11,22 @@ public class Chapter
     public string PictureName;
     public int UnlockPerc;
 
+    public bool[] JigsawPeicesUnlocked = new bool[12];
+
     public Chapter(string name, string prefabName, string picture, int initPerc = 0)
     {
         Name = name;
         PrefabName = prefabName;
         PictureName = picture;
+
+        float perc = (float)initPerc / 100f;
+        perc *= JigsawPeicesUnlocked.Length;
+        for (int i = 0; i < JigsawPeicesUnlocked.Length; i++)
+        {
+            JigsawPeicesUnlocked[i] = (i < perc);
+        }
         UnlockPerc = initPerc;
     }
-
 }
 
 public class StateChapterSelect : State
@@ -65,6 +73,12 @@ public class StateChapterSelect : State
             m_Chapters[i].Mono.Image.sprite = Resources.Load<Sprite>("PinballBackgrounds/" + m_Chapters[i].PictureName);
             m_Chapters[i].Mono.Title.text = m_Chapters[i].Name;
             m_Chapters[i].Mono.Percentage.text = m_Chapters[i].UnlockPerc.ToString() + "%";
+
+            for (int j = 0; j < m_Chapters[i].JigsawPeicesUnlocked.Length; j++)
+            {
+                m_Chapters[i].Mono.JigsawPieces[j].SetActive(m_Chapters[i].JigsawPeicesUnlocked[j]);
+                m_Chapters[i].Mono.JigsawPieces[j].transform.GetChild(0).GetComponent<Image>().sprite = m_Chapters[i].Mono.Image.sprite;
+            }
         }
         float preferred = m_Mono.Grid.cellSize.x * m_Chapters.Length;
         Debug.Log("Pos 1 : [" + m_Mono.Grid.transform.localPosition + "]; Preferred Width : [" + preferred + "];");

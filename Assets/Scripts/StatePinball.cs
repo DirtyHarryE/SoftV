@@ -17,13 +17,13 @@ public class StatePinball : State
     public int ID;
 
 
-    GameObject m_GO;
+    PinballMono m_PinballMono;
     // Use this for initialization
     public override void Init()
     {
         GameObject go = GameObject.Instantiate(Resources.Load("Prefabs/States/PinballLevels/" + StateChapterSelect.Instance.Chapters[ID].PrefabName)) as GameObject;
         Debug.Log("Init");
-        m_GO = go;
+        m_PinballMono = go.GetComponent<PinballMono>();
     }
 
     // Update is called once per frame
@@ -38,6 +38,6 @@ public class StatePinball : State
         StateChallenge.Instance.ResetCorrectAnswers();
         StateChallenge.Instance.ResetQuestions();
 
-        UnityEngine.Object.Destroy(m_GO);
+        UnityEngine.Object.Destroy(m_PinballMono);
     }
 }
