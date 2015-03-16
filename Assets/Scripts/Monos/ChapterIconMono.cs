@@ -26,6 +26,6 @@ public class ChapterIconMono : MonoBehaviour
 
     public void PressButton()
     {
-        (GameController.Instance.GetState(GameController.States.ChapterSelect) as StateChapterSelect).PressButton(ID);
+        StateChapterSelect.Instance.PressButton(ID);
     }
 }

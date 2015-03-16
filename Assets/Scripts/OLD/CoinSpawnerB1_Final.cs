@@ -6,7 +6,7 @@ public class CoinSpawnerB1_Final : MonoBehaviour {
     public GameObject coin;
     private int coinsSpawned = 0;
     private float m_Countdown = 0f;
-    private float m_Reset = .5f;
+    private float m_Reset = .25f;
 
     void Update()
     {

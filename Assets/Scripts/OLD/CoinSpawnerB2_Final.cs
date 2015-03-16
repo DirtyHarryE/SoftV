@@ -64,7 +64,7 @@ public class CoinSpawnerB2_Final : MonoBehaviour {
         else
         {
             //Application.LoadLevel("B3");
-            //Debug.Log("rhg");
+            Debug.Log("rhg");
             GameController.Instance.ChangeState(GameController.States.ChapterSelect);
         }
     }

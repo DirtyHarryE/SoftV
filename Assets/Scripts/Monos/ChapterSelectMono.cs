@@ -11,4 +11,7 @@ public class ChapterSelectMono : MonoBehaviour {
     {
         get { return m_Grid; }
     }
+    [SerializeField]
+    private Scrollbar m_Bar;
+    public Scrollbar Scrollbar { get { return m_Bar; } }
 }

@@ -7,16 +7,33 @@ public class Chapter
 {
     public ChapterIconMono Mono;
     public string Name;
-    public string PrefabName;
+    public int LevelNumber;
     public string PictureName;
-    public int UnlockPerc;
+
+    public int UnlockPerc
+    {
+        get
+        {
+            int count=0;
+            for (int i = 0; i < JigsawPeicesUnlocked.Length; i++)
+            {
+                if (JigsawPeicesUnlocked[i])
+                {
+                    count += 1;
+                }
+            }
+            float perc = ((float)count / (float)JigsawPeicesUnlocked.Length) * 100f;
+            Debug.Log("Percentage : [" + perc + "]; Count : [" + count+"];");
+            return (int)perc;
+        }
+    }
 
     public bool[] JigsawPeicesUnlocked = new bool[12];
 
-    public Chapter(string name, string prefabName, string picture, int initPerc = 0)
+    public Chapter(string name, int levelNumber, string picture, int initPerc = 0)
     {
         Name = name;
-        PrefabName = prefabName;
+        LevelNumber = levelNumber;
         PictureName = picture;
 
         float perc = (float)initPerc / 100f;
@@ -25,7 +42,7 @@ public class Chapter
         {
             JigsawPeicesUnlocked[i] = (i < perc);
         }
-        UnlockPerc = initPerc;
+        //UnlockPerc = initPerc;
     }
 }
 
@@ -44,12 +61,11 @@ public class StateChapterSelect : State
 
 
     private Chapter[] m_Chapters = new Chapter[]{
-        new Chapter("Chapter One", "Pinball_1", "01", 100),
-        new Chapter("Chapter Two", "Pinball_2","02",100),
-        new Chapter("Chapter Three", "Pinball_3","03",90),
-        new Chapter("Chapter Four", "Pinball_1","01"),
-        new Chapter("Chapter Five", "Pinball_2","02"),
-        new Chapter("Chapter Six", "Pinball_3","03")
+        new Chapter("Chapter One", 1,"01",100),
+        new Chapter("Chapter Two", 2,"02",100),
+        new Chapter("Chapter Three", 3,"03",80),
+        new Chapter("Chapter Four", 1,"02"),
+        new Chapter("Chapter Five", 2,"01"),
     };
     public Chapter[] Chapters { get { return m_Chapters; } }
 

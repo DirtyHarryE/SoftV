@@ -30,7 +30,7 @@ public class StateChallenge : State
     // Update is called once per frame
     public override void Update()
     {
-        Debug.Log("Coins : [" + coins + "];");
+        //Debug.Log("Coins : [" + coins + "];");
     }
 
     public override void Exit()
@@ -50,19 +50,19 @@ public class StateChallenge : State
 
     public void AddCoin(int amount)
     {
-        Debug.Log("Add Coin : [" + amount + "|" + coins + "];");
+        //Debug.Log("Add Coin : [" + amount + "|" + coins + "];");
         coins += amount;
     }
 
     public void ResetCoins()
     {
-        Debug.Log("ResetCoins : [" + coins + "];");
+        //Debug.Log("ResetCoins : [" + coins + "];");
         coins = 0;
     }
 
     public int GetCoinsEarned()
     {
-        Debug.Log("GetCoinsEarned : [" + coins + "];");
+        //Debug.Log("GetCoinsEarned : [" + coins + "];");
         return coins;
     }
 

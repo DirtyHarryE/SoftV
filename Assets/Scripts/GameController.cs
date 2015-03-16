@@ -40,6 +40,7 @@ public class GameController {
 
     public void ChangeState(States state)
     {
+        Debug.Log("Change State");
         if (m_CurState!=null)
         {
             m_CurState.Exit();
@@ -55,7 +56,7 @@ public class GameController {
 
     public void Init()
     {
-        ChangeState(States.ChapterSelect);
+        ChangeState(States.Splash);
     }
     public void Update()
     {

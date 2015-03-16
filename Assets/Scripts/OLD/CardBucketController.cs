@@ -13,6 +13,19 @@ public class CardBucketController : MonoBehaviour {
     private float progressionStart;
     private float progressionMoveAmount;
 
+    private int m_JigsawPeiceToUnlock = -1;
+    public int JigsawPeiceToUnlock
+    {
+        get { return m_JigsawPeiceToUnlock; }
+        set { m_JigsawPeiceToUnlock = value; }
+    }
+    private int m_LevelToUnlock = -1;
+    public int LevelToUnlock
+    {
+        get { return m_LevelToUnlock; }
+        set { m_LevelToUnlock = value; }
+    }
+
 	void Start () 
     {
         GetChildComponents();
@@ -52,8 +65,12 @@ public class CardBucketController : MonoBehaviour {
         {
             if (StatePinball.Instance.ID < StateChapterSelect.Instance.Chapters.Length )
             {
-                int curPerc = StateChapterSelect.Instance.Chapters[StatePinball.Instance.ID+1].UnlockPerc;
-                StateChapterSelect.Instance.Chapters[StatePinball.Instance.ID+1].UnlockPerc = curPerc == 100 ? 0 : curPerc + 10;
+                if (m_JigsawPeiceToUnlock != -1)
+                {
+                    StateChapterSelect.Instance.Chapters[m_LevelToUnlock].JigsawPeicesUnlocked[m_JigsawPeiceToUnlock] = true;
+                }
+                //int curPerc = StateChapterSelect.Instance.Chapters[StatePinball.Instance.ID+1].UnlockPerc;
+                //StateChapterSelect.Instance.Chapters[StatePinball.Instance.ID+1].UnlockPerc = curPerc == 100 ? 0 : curPerc + 10;
             }
         }
     }
